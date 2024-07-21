@@ -1,8 +1,23 @@
-import React, { useRef } from 'react';
-import { FaPhone, FaDesktop, FaCamera, FaHeadphones, FaWatchmanMonitoring, FaGamepad, FaTv, FaCar, FaBook, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import React, { useRef, useState, useEffect } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const Categories = () => {
+const Categories = ({ onCategoryChange }) => {
+  const [categories, setCategories] = useState([]);
   const scrollRef = useRef(null);
+
+  useEffect(() => {
+    fetch('https://api.escuelajs.co/api/v1/categories')
+      .then(response => response.json())
+      .then(data => {
+        const formattedData = data.map(category => ({
+          id: category.id,
+          name: category.name,
+          image: category.image,
+        }));
+        setCategories(formattedData);
+      })
+      .catch(error => console.error('Error fetching categories:', error));
+  }, []);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -15,22 +30,6 @@ const Categories = () => {
       scrollRef.current.scrollBy({ left: 200, behavior: 'smooth' });
     }
   };
-
-  const categories = [
-    { icon: <FaDesktop className='w-8 h-8 mb-2 mx-auto' />, text: 'Electronique' },
-    { icon: <FaCamera className='w-8 h-8 mb-2 mx-auto' />, text: 'Caméra' },
-    { icon: <FaHeadphones className='w-8 h-8 mb-2 mx-auto' />, text: 'Écouteurs' },
-    { icon: <FaPhone className='w-8 h-8 mb-2 mx-auto' />, text: 'Téléphone' },
-    { icon: <FaGamepad className='w-8 h-8 mb-2 mx-auto' />, text: 'Jeux' },
-    { icon: <FaWatchmanMonitoring className='w-8 h-8 mb-2 mx-auto' />, text: 'Montre' },
-    { icon: <FaTv className='w-8 h-8 mb-2 mx-auto' />, text: 'TV' },
-    { icon: <FaCar className='w-8 h-8 mb-2 mx-auto' />, text: 'Voiture' },
-    { icon: <FaCamera className='w-8 h-8 mb-2 mx-auto' />, text: 'Caméra' },
-    { icon: <FaHeadphones className='w-8 h-8 mb-2 mx-auto' />, text: 'Écouteurs' },
-    { icon: <FaPhone className='w-8 h-8 mb-2 mx-auto' />, text: 'Téléphone' },
-    { icon: <FaGamepad className='w-8 h-8 mb-2 mx-auto' />, text: 'Jeux' },
-    { icon: <FaBook className='w-8 h-8 mb-2 mx-auto' />, text: 'Livres' },
-  ];
 
   return (
     <div className='p-4'>
@@ -45,10 +44,14 @@ const Categories = () => {
           </button>
           <div className="overflow-hidden relative px-4 mx-16">
             <div ref={scrollRef} className="flex overflow-x-auto hide-scrollbar space-x-4 space-y-">
-              {categories.map((category, index) => (
-                <div key={index} className="flex-shrink-0 w-40">
+              {categories.map(category => (
+                <div key={category.id} className="flex-shrink-0 w-40">
                   <a
                     href="#"
+                    onClick={(e) => {
+                      e.preventDefault();  // Prevent default anchor behavior
+                      onCategoryChange(category.id);  // Call the callback function
+                    }}
                     className="block relative bg-white rounded-lg shadow-md p-5 border border-gray-300 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#FFC300]"
                     style={{
                       transition: 'border-color 0.3s ease-in-out',
@@ -56,8 +59,8 @@ const Categories = () => {
                       borderTop: '3px solid transparent', // Ajout du bord supérieur transparent
                     }}
                   >
-                    {category.icon}
-                    <span className="block mt-2">{category.text}</span>
+                    <img src={category.image} alt={category.name} className='w-8 h-8 mb-2 mx-auto' />
+                    <span className="block mt-2">{category.name}</span>
                   </a>
                 </div>
               ))}

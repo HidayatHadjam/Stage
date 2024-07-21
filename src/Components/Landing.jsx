@@ -1,8 +1,8 @@
 import React from "react";
 import Bg from "../Images/Bg.svg";
-import SearchBar from '../Components/SearchBar';
+import SearchBar from './SearchBar'; 
 
-const Landing = () => {
+const Landing = ({ onSearch }) => {
     return (
         <div className="relative block w-full h-screen">
             <img src={Bg} alt="Example" className="w-full h-full object-cover" />
@@ -11,7 +11,7 @@ const Landing = () => {
                     <span className="pt-6">Découvrez la Quantité,</span>
                     <span>  Profitez de la Qualité !</span>
                 </div>
-                <SearchBar />
+                <SearchBar onSearch={onSearch} />
             </div>
         </div>
     );
