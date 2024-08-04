@@ -11,7 +11,7 @@ const Produits = ({ selectedCategory, searchTerm }) => {
             .get("https://api.escuelajs.co/api/v1/products")
             .then(function(response) {
                 console.log(response.data);
-                setProduits(response.data);
+                setProduits(response.data.slice(8));
             })
             .catch(function(error) {
                 console.log(error);

@@ -5,7 +5,8 @@ import Footer from './Components/Footer';
 import Categories from './Components/Categories';
 import Produits from './Components/Produits';
 import Landing from './Components/Landing';
-
+import Offres from './Components/Offres';
+import SideBar from './Components/SideBar';
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -20,11 +21,13 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      {/* <NavBar />
       <Landing onSearch={handleSearch} />
       <Categories onCategoryChange={handleCategoryChange} />
       <Produits selectedCategory={selectedCategory} searchTerm={searchTerm} />
-      <Footer />
+      < Offres/>
+      <Footer /> */}
+      <SideBar/>
     </div>
   );
 }
