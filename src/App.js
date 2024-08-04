@@ -7,6 +7,8 @@ import Produits from './Components/Produits';
 import Landing from './Components/Landing';
 import Offres from './Components/Offres';
 import SideBar from './Components/SideBar';
+import Header from './Components/Header';
+
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,6 +29,7 @@ function App() {
       <Produits selectedCategory={selectedCategory} searchTerm={searchTerm} />
       < Offres/>
       <Footer /> */}
+      <Header/>
       <SideBar/>
     </div>
   );

@@ -11,10 +11,6 @@ const SideBar = () => {
 
     return (
         <div className="flex flex-col h-screen w-64 bg-[#FAFAFA] shadow-md">
-            <div className="flex items-center justify-center p-4">
-                <img src={GrosMaket} alt="Logo" className="h-10 w-[80%]" />
-            </div>
-
             <div className="border-t border-gray-300">
             </div>
 
@@ -72,7 +68,7 @@ const SideBar = () => {
                             <img 
                                 src={Categories} 
                                 alt="categories" 
-                                className={`h-4 w-[10%] ${activeLink === 'categories' ? 'text-white' : 'text-black'}`} 
+                                className={`h- w-[10%] ${activeLink === 'categories' ? 'text-white' : 'text-black'}`} 
                             />
                         </a>
                     </li>
