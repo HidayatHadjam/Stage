@@ -8,31 +8,27 @@ import Landing from './Components/Landing';
 import Offres from './Components/Offres';
 import SideBar from './Components/SideBar';
 import Header from './Components/Header';
+import Dashboard from './Components/Dashboard';
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleCategoryChange = (categoryId) => {
-    setSelectedCategory(categoryId);
-  };
-
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-  };
-
   return (
-    <div className="App">
-      {/* <NavBar />
-      <Landing onSearch={handleSearch} />
-      <Categories onCategoryChange={handleCategoryChange} />
-      <Produits selectedCategory={selectedCategory} searchTerm={searchTerm} />
-      < Offres/>
-      <Footer /> */}
-      <Header/>
-      <SideBar/>
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      <SideBar />
+      
+      {/* Contenu principal */}
+      <div className="flex-1 flex flex-col">
+        {/* Header */}
+        <Header />
+        
+        {/* Contenu du Dashboard */}
+        <main className="flex-1 overflow-y-auto p-6">
+          <Dashboard />
+        </main>
+      </div>
     </div>
   );
 }
 
 export default App;
+
