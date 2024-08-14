@@ -8,7 +8,7 @@ import Listmoi from '../Images/list_moi.svg';
 
 const Dashboard = () => {
     return (
-        <div className="bg-[#E6E6E6] p-6 w-[80%]">
+        <div className="bg-[#E6E6E6] p-6 w-[100%]">
             {/* Titre et Breadcrumb */}
             <div className="mb-4">
                 <h1 className="text-2xl font-bold text-[#333]">Dashboard</h1>
@@ -62,8 +62,8 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <hr className="border-t border-gray-300 mb-2" /> {/* Ligne fine */}
-                    <div className="flex justify-center">
-                        <img src={ImageBelowLine} alt="Image Below Line" className=" w-auto h-auto my-auto p-4" /> {/* Image */}
+                    <div className="flex justify-center w-[100%] h-[100%] my-auto pr-2">
+                        <img src={ImageBelowLine} alt="Image Below Line" className=" w-[100%] h-[100%] my-auto " /> {/* Image */}
                     </div>
                 </div>
 
@@ -103,14 +103,13 @@ const Dashboard = () => {
             <div className="bg-[#FAFAFA] p-4 rounded-lg mt-4 flex flex-col">
                 <div className="flex items-center justify-between mb-2">
                     <p className="text-lg font-semibold text-[#333]">Ventes par catégorie</p>
-                    <button className="flex items-center text-[#243645] border border-[#243645] py-1 px-3 rounded-lg bg-[#F7F7F7]">
+                    <button className="flex items-center text-[#243645]  py-1 px-3 rounded-lg border rounded-lg bg-gray-100 text-gray-700 h-8 hover:bg-gray-200">
                         <span>Ce moi</span>
                         <img src={Listmoi} alt="Liste" className="h-4 w-4 ml-2" />
                     </button>
                 </div>
-                <hr className="border-t border-gray-300 mb-2" /> {/* Ligne fine */}
                 <div className="flex justify-center">
-                    <img src={ListIcon} alt="Image Below Line" className="h-35 w-auto p-4" /> {/* Image */}
+                    <img src={ListIcon} alt="Image Below Line" className="h-30 w-[95%] " /> 
                 </div>
             </div>
         </div>
