@@ -10,7 +10,7 @@ const SideBar = () => {
     const [activeLink, setActiveLink] = useState('dashboard');
 
     return (
-        <div className="flex flex-col h-screen w-[30%] bg-[#FAFAFA] shadow-md">
+        <div className="flex flex-col h-screen w-[20%] bg-[#FAFAFA] shadow-md">
             <div className="border-t border-gray-300">
             </div>
 
